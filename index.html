@@ -1,0 +1,35 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>IndyHAX â€¢ Redirect</title>
+  <style>
+    body{font-family:system-ui,Segoe UI,Roboto,Arial,sans-serif;max-width:900px;margin:40px auto;padding:0 16px}
+    .card{border:1px solid #ddd;border-radius:12px;padding:18px;background:#fff}
+    .muted{color:#666}
+    code{background:#f6f8fa;border:1px solid #e5e7eb;border-radius:8px;padding:2px 6px}
+    a{color:#0b5fff}
+  </style>
+</head>
+<body>
+  <h1>IndyHAX CTF â€” Redirect</h1>
+  <div class="card">
+    <p class="muted">This app takes a <code>?next=</code> parameter and "redirects" you.</p>
+    <p>Goal: get the flag. Hint: check what happens when <code>next</code> is missing.</p>
+    <p><a href="?next=/welcome.html">Try redirect</a></p>
+  </div>
+
+  <script>
+    const p = new URLSearchParams(location.search);
+    const next = p.get('next');
+    // Intentionally flawed redirect allowlist
+    if (!next) {
+      // dev fallback
+      location.replace('/welcome.html#' + 'SU5EWUhBWHt1cmxfcGFyc2luZ19hbmRfcmVkaXJlY3RzX2Nhbl9iZV9kYW5nZXJvdXN9');
+    } else {
+      location.replace(next);
+    }
+  </script>
+</body>
+</html>

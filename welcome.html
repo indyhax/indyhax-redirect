@@ -1,0 +1,17 @@
+﻿<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Welcome</title>
+<style>body{font-family:system-ui,Segoe UI,Roboto,Arial,sans-serif;max-width:900px;margin:40px auto;padding:0 16px}.muted{color:#666}pre{background:#f6f8fa;border:1px solid #e5e7eb;border-radius:10px;padding:12px}</style>
+</head>
+<body>
+  <h1>Welcome</h1>
+  <p class="muted">If you landed here the intended way, the flag is in the URL fragment.</p>
+  <pre id="out"></pre>
+  <script>
+    const frag = location.hash.slice(1);
+    try { document.querySelector('#out').textContent = atob(frag); }
+    catch { document.querySelector('#out').textContent = 'Nope.'; }
+  </script>
+</body>
+</html>
